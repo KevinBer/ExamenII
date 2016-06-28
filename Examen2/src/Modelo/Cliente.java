@@ -17,12 +17,12 @@ import java.util.logging.Logger;
  *
  * @author Carolina
  */
-public class ClienteDifusion extends Thread{
+public class Cliente extends Thread{
     Socket s;
     VentanaChatDifusion v;
     private String leido;
 
-    public ClienteDifusion(Socket s, VentanaChatDifusion v) {
+    public Cliente(Socket s, VentanaChatDifusion v) {
         this.s = s;
         this.v = v;
         System.out.println(s);
@@ -39,7 +39,7 @@ public class ClienteDifusion extends Thread{
                 v.setText(leido);
             } //fin del while
             catch (IOException ex) {
-                Logger.getLogger(ClienteDifusion.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             } 
         }
     }

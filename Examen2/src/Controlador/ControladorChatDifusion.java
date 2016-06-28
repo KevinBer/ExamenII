@@ -6,7 +6,7 @@
 package Controlador;
 
 
-import Modelo.ClienteDifusion;
+import Modelo.Cliente;
 import Vista.VentanaChatDifusion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class ControladorChatDifusion implements ActionListener{
     VentanaChatDifusion chat;
     Socket s;
-    ClienteDifusion cliente;
+    Cliente cliente;
 
     public ControladorChatDifusion(VentanaChatDifusion chat) {
         this.chat = chat;
@@ -37,7 +37,7 @@ public class ControladorChatDifusion implements ActionListener{
             //s tiene que ser nulo para que pueda ser 
             if(s == null){
            s = new Socket(chat.getHost(),chat.getPort());
-            cliente = new ClienteDifusion(s, chat);
+            cliente = new Cliente(s, chat);
             cliente.start();
             }    
         } catch (IOException ex) {
