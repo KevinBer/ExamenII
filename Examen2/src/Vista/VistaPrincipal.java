@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import Controlador.ControladorVistaPrincipal;
+
 /**
  *
  * @author Carolina
@@ -16,6 +18,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
      */
     public VistaPrincipal() {
         initComponents();
+        ControladorVistaPrincipal cvp = new ControladorVistaPrincipal(this);
+        itemDifusion.addActionListener(cvp);
+        itemGrupal.addActionListener(cvp);
+        privado.addActionListener(cvp);
+        itemSalir.addActionListener(cvp);
     }
 
     /**
@@ -28,42 +35,47 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        itemPrivado = new javax.swing.JMenu();
+        privado = new javax.swing.JMenuItem();
+        itemDifusion = new javax.swing.JMenuItem();
+        itemGrupal = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        itemSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Crear chat");
+        itemPrivado.setText("Crear chat");
 
-        jMenuItem1.setText("Chat privado");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        privado.setText("Privado");
+        privado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                privadoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        itemPrivado.add(privado);
 
-        jMenuItem3.setText("Difusión");
-        jMenu1.add(jMenuItem3);
-
-        jMenuItem2.setText("Chat grupal");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        itemDifusion.setText("Difusión");
+        itemDifusion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                itemDifusionActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        itemPrivado.add(itemDifusion);
 
-        jMenuBar1.add(jMenu1);
+        itemGrupal.setText("Chat grupal");
+        itemGrupal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemGrupalActionPerformed(evt);
+            }
+        });
+        itemPrivado.add(itemGrupal);
+
+        jMenuBar1.add(itemPrivado);
 
         jMenu2.setText("Salir");
 
-        jMenuItem4.setText("jMenuItem4");
-        jMenu2.add(jMenuItem4);
+        itemSalir.setText("Salir");
+        jMenu2.add(itemSalir);
 
         jMenuBar1.add(jMenu2);
 
@@ -83,13 +95,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void itemGrupalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGrupalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_itemGrupalActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void privadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_privadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_privadoActionPerformed
+
+    private void itemDifusionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDifusionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemDifusionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,12 +143,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem itemDifusion;
+    private javax.swing.JMenuItem itemGrupal;
+    private javax.swing.JMenu itemPrivado;
+    private javax.swing.JMenuItem itemSalir;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem privado;
     // End of variables declaration//GEN-END:variables
 }
