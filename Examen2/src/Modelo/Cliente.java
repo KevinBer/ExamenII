@@ -23,7 +23,7 @@ public class Cliente extends Thread{
     private String leido;
     Cifrado cifrado;
     String letra="-d";
-    String [] valor= new String[2];
+    String [] valor= new String[1];
 
     public Cliente(Socket s, VentanaChatDifusion v) {
         
@@ -41,7 +41,7 @@ public class Cliente extends Thread{
             try {
                 in = new DataInputStream(s.getInputStream());
                 leido= in.readUTF();
-                valor[1]="-d";
+                valor[0]="-d";
                 cifrado.cifrarDescifrar(valor);
                 v.setText(leido);
             } //fin del while
@@ -54,6 +54,8 @@ public class Cliente extends Thread{
     public void enviar() throws IOException{
         DataOutputStream out;
         out = new DataOutputStream(s.getOutputStream());
+        valor[0]="-c";
+        cifrado.cifrarDescifrar(valor);
         out.writeUTF(v.getText());
         v.setText(v.getText());
     

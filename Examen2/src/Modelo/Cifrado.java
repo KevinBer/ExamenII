@@ -8,88 +8,76 @@ package Modelo;
 import java.io.*;
 import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
-import java.security.*;
-import java.util.*;
 
 /**
  *
  * @author kevin bermudez
  */
 public class Cifrado{
+    String comando1 = "-c";
+    String comando2 = "-d";
+    int leidos;
+    int fin_archivo;
     
     public void cifrarDescifrar(String [] valor)
-{
-   
-      String comando1 = "-c";
-      String comando2 = "-d";
+    {
+        if ((comando1.equals(valor[0]))||(comando2.equals(valor[0]))){    
+    
+        try{
+            InputStreamReader leer_clave = new InputStreamReader(System.in);
+            BufferedReader buff_clave = new BufferedReader(leer_clave);
+            System.out.print("Escriba una clave: ");
+            String clave = buff_clave.readLine();
       
-      //COMANDO 1 o COMANDO 2
-      if ((comando1.equals(valor[0]))||(comando2.equals(valor[0]))){    
-    //leer clave por teclado
-    try{
-         InputStreamReader leer_clave = new InputStreamReader(System.in);
-         BufferedReader buff_clave = new BufferedReader(leer_clave);
-         System.out.print("Escriba una clave: ");
-         String clave = buff_clave.readLine();
+        try{
+            SecretKeyFactory skf = SecretKeyFactory.getInstance("DES");
+            DESKeySpec kspec = new DESKeySpec(clave.getBytes());
+            SecretKey ks = skf.generateSecret(kspec);
       
-         //pasar clave a la clase SecretKey
-      try{
-       SecretKeyFactory skf = SecretKeyFactory.getInstance("DES");
-       DESKeySpec kspec = new DESKeySpec(clave.getBytes());
-       SecretKey ks = skf.generateSecret(kspec);
-      
-      //Inicializar el cifrado
-         try{
+        try{
             Cipher cifrado = Cipher.getInstance("DES");
-         
-            //Escojo modo cifrado o descifrado segun sea el caso
-         
             if (comando1.equals(valor[0])){
-               cifrado.init(Cipher.ENCRYPT_MODE, ks);}//MODO CIFRAR
+                cifrado.init(Cipher.ENCRYPT_MODE, ks);
+            }
             if (comando2.equals(valor[0])){
-               cifrado.init(Cipher.DECRYPT_MODE, ks);}//MODO DESCIFRAR
+                cifrado.init(Cipher.DECRYPT_MODE, ks);
+            }
 
-               
-            //Leer fichero
-       
             InputStream archivo = new FileInputStream( valor[1] );
             OutputStream fich_out = new FileOutputStream ( valor[2] );
          
             byte[] buffer = new byte[1024];
             byte[] bloque_cifrado;
             String textoCifrado = new String();
-            int fin_archivo = -1;
-            int leidos;//numero de bytes leidos
-         
+            fin_archivo = -1;
             leidos = archivo.read(buffer);
          
-            while( leidos != fin_archivo ) {
-               bloque_cifrado = cifrado.update(buffer,0,leidos);
-               textoCifrado = textoCifrado + new String(bloque_cifrado,"ISO-8859-1"); 
-               leidos = archivo.read(buffer);          
+            while(leidos != fin_archivo) {
+                bloque_cifrado = cifrado.update(buffer,0,leidos);
+                textoCifrado = textoCifrado + new String(bloque_cifrado,"ISO-8859-1"); 
+                leidos = archivo.read(buffer);          
             }
           
             archivo.close();
          
             bloque_cifrado = cifrado.doFinal();
             textoCifrado = textoCifrado + new String(bloque_cifrado,"ISO-8859-1");
-            //ISO-8859-1 es ISO-Latin-1
-         
-            fich_out.write(textoCifrado.getBytes("ISO-8859-1"));//escribir fichero
+                     
+            fich_out.write(textoCifrado.getBytes("ISO-8859-1"));
          
             }
-            //Inicializacion de cifrado
-            catch(javax.crypto.NoSuchPaddingException nspe) {} //Instanciacion DES
-            catch(javax.crypto.IllegalBlockSizeException ibse) {}//metodo doFinal
-            catch(javax.crypto.BadPaddingException bpe) {}//metodo doFinal
-         }
-         //pasar clave a la clase SecretKey
-         catch(java.security.InvalidKeyException ike) {}
-         catch(java.security.spec.InvalidKeySpecException ikse) {}
-         catch(java.security.NoSuchAlgorithmException nsae) {}
-         }
-         //leer del teclado la clave como String
-         catch(java.io.IOException ioex) {}
-      }
-   }
+            
+            catch(javax.crypto.NoSuchPaddingException nspe) {} 
+            catch(javax.crypto.IllegalBlockSizeException ibse) {}
+            catch(javax.crypto.BadPaddingException bpe) {}
+        }
+         
+        catch(java.security.InvalidKeyException ike) {}
+        catch(java.security.spec.InvalidKeySpecException ikse) {}
+        catch(java.security.NoSuchAlgorithmException nsae) {}
+        }
+
+        catch(java.io.IOException ioex) {}
+        }
+    }
 }
