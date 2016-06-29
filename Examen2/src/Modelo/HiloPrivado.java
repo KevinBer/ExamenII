@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class HiloPrivado extends Thread {
     private Thread t;
-    private String nombre, leido;
+    String nombre, leido;
     Socket socket;
     ServidorChatPrivado servidor;
 
@@ -51,6 +51,8 @@ public class HiloPrivado extends Thread {
             try {
 
                 this.leer();
+                String [] vector= leido.split(";");
+                
 
             } catch (IOException ex) {
                 //Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);

@@ -4,34 +4,25 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="itemPrivado">
+        <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Crear chat"/>
+            <Property name="text" type="java.lang.String" value="Tipo Chat"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="privado">
+            <MenuItem class="javax.swing.JMenuItem" name="itemPrivado">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Privado"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="privadoActionPerformed"/>
-              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemDifusion">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Difusi&#xf3;n"/>
+                <Property name="text" type="java.lang.String" value="Difusion"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemDifusionActionPerformed"/>
-              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemGrupal">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Chat grupal"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemGrupalActionPerformed"/>
-              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

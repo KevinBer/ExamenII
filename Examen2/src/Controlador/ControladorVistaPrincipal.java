@@ -8,6 +8,7 @@ package Controlador;
 import Vista.PrincipalDifusion;
 import Vista.VentanaChatDifusion;
 import Vista.VistaPrincipal;
+//import Vista.VistaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,8 +33,8 @@ public class ControladorVistaPrincipal implements ActionListener  {
              System.out.println("funciona");
         }
         if(e.getActionCommand().equalsIgnoreCase("Difusión")){
-           controladorPrincipalDifusion = new ControladorPrincipalDifusion(pd);
-            VentanaChatDifusion chat;
+           //controladorPrincipalDifusion = new ControladorPrincipalDifusion(pd);
+            pd.setVisible(true);
         }
          if(e.getActionCommand().equalsIgnoreCase("Chat grupal")){
            System.out.println("funciona");

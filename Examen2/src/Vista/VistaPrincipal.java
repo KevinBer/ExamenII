@@ -9,7 +9,7 @@ import Controlador.ControladorVistaPrincipal;
 
 /**
  *
- * @author Carolina
+ * @author kevin bermudez
  */
 public class VistaPrincipal extends javax.swing.JFrame {
 
@@ -21,7 +21,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         ControladorVistaPrincipal cvp = new ControladorVistaPrincipal(this);
         itemDifusion.addActionListener(cvp);
         itemGrupal.addActionListener(cvp);
-        privado.addActionListener(cvp);
+        itemPrivado.addActionListener(cvp);
         itemSalir.addActionListener(cvp);
     }
 
@@ -35,8 +35,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        itemPrivado = new javax.swing.JMenu();
-        privado = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        itemPrivado = new javax.swing.JMenuItem();
         itemDifusion = new javax.swing.JMenuItem();
         itemGrupal = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -44,33 +44,18 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        itemPrivado.setText("Crear chat");
+        jMenu1.setText("Tipo Chat");
 
-        privado.setText("Privado");
-        privado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                privadoActionPerformed(evt);
-            }
-        });
-        itemPrivado.add(privado);
+        itemPrivado.setText("Privado");
+        jMenu1.add(itemPrivado);
 
-        itemDifusion.setText("Difusión");
-        itemDifusion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemDifusionActionPerformed(evt);
-            }
-        });
-        itemPrivado.add(itemDifusion);
+        itemDifusion.setText("Difusion");
+        jMenu1.add(itemDifusion);
 
         itemGrupal.setText("Chat grupal");
-        itemGrupal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemGrupalActionPerformed(evt);
-            }
-        });
-        itemPrivado.add(itemGrupal);
+        jMenu1.add(itemGrupal);
 
-        jMenuBar1.add(itemPrivado);
+        jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Salir");
 
@@ -94,18 +79,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void itemGrupalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGrupalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemGrupalActionPerformed
-
-    private void privadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_privadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_privadoActionPerformed
-
-    private void itemDifusionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDifusionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemDifusionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,10 +118,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem itemDifusion;
     private javax.swing.JMenuItem itemGrupal;
-    private javax.swing.JMenu itemPrivado;
+    private javax.swing.JMenuItem itemPrivado;
     private javax.swing.JMenuItem itemSalir;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem privado;
     // End of variables declaration//GEN-END:variables
 }

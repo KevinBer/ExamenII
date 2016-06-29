@@ -58,6 +58,7 @@ public class ServidorChatPrivado extends Thread {
     public void escribirTodos(String mensaje, String nombre) throws IOException{
         try {
             HiloPrivado h1;
+            cliente= new ArrayList<>();
             lock.lock();
             for(int i=0; i<hash.size(); i++){
                h1 = cliente.get(i);
